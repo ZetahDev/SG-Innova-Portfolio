@@ -3,7 +3,6 @@
 import { useTranslations } from "@/lib/i18n/LanguageProvider";
 import { LanguageSelector } from "./LanguageSelector";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { usePathname } from 'next/navigation';
 
 export function NavigationMenu() {

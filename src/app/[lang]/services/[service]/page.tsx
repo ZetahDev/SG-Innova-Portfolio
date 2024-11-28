@@ -2,6 +2,9 @@ import { getTranslations, isValidService, ServiceType } from "@/lib/i18n/transla
 import { BackgroundGradient } from "@/components/ui/background-gradient"
 import { notFound } from "next/navigation"
 
+type ValidLanguage = "en" | "es";
+type ValidService = "software" | "consulting" | "blockchain" | "vrar";
+
 interface ServicePageProps {
   params: {
     lang: string;
@@ -10,12 +13,20 @@ interface ServicePageProps {
 }
 
 export default function ServicePage({ params: { lang, service } }: ServicePageProps) {
+  if (!["en", "es"].includes(lang)) {
+    notFound()
+  }
+
   if (!isValidService(service)) {
     notFound()
   }
 
-  const t = getTranslations(lang)
-  const serviceData = t.services[service]
+  const t = getTranslations(lang as ValidLanguage)
+  const serviceData = t.services[service as ValidService]
+
+  if (!serviceData) {
+    notFound()
+  }
 
   return (
     <div className="min-h-screen bg-black py-20">

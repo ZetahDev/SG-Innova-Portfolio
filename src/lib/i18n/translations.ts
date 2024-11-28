@@ -166,8 +166,11 @@ export type ServiceType = {
   features: string[];
 };
 
-export function isValidService(service: string): service is keyof typeof translations.en.services {
-  return service in translations.en.services;
+export const validServices = ["software", "consulting", "blockchain", "vrar"] as const
+export type ValidService = typeof validServices[number]
+
+export function isValidService(service: string): service is ValidService {
+  return validServices.includes(service as ValidService)
 }
 
 export function getTranslations(lang: Languages) {
