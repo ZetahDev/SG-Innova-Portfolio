@@ -32,9 +32,12 @@ export function NavigationMenu() {
             >
               {t.services.title}
             </button>
-            <Link href="#contact" className="text-white hover:text-purple-400 transition-colors">
+            <a 
+              href="mailto:ti@sginnova.com.co" 
+              className="text-white hover:text-purple-400 transition-colors"
+            >
               {t.contact.title}
-            </Link>
+            </a>
             <LanguageSelector />
           </div>
         </div>

@@ -7,7 +7,6 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
     <div className="flex flex-col min-h-screen">
       <HeroSection />
       <ServicesSection />
-      <ContactSection />
     </div>
   )
 }
